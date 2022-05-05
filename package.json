@@ -9,6 +9,10 @@
   ],
   "main": "index.js",
   "types": "index.d.ts",
+  "files": [
+    "index.d.ts",
+    "src"
+  ],
   "scripts": {
     "update": "npm-check-updates -u"
   },
