@@ -1,0 +1,33 @@
+{
+  "name": "codemirror-svelte",
+  "version": "1.0.0",
+  "description": "Provides a CodeMirror wrapper component for Svelte",
+  "keywords": [
+    "svelte",
+    "codemirror",
+    "components"
+  ],
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "update": "npm-check-updates -u"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NaokiM03/codemirror-svelte.git"
+  },
+  "author": "NaokiM03",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NaokiM03/codemirror-svelte/issues"
+  },
+  "homepage": "https://github.com/NaokiM03/codemirror-svelte#readme",
+  "peerDependencies": {
+    "codemirror": "^5.65.3"
+  },
+  "devDependencies": {
+    "@tsconfig/svelte": "^3.0.0",
+    "@types/codemirror": "^5.60.5",
+    "svelte": "^3.48.0"
+  }
+}
