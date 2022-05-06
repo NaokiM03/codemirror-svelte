@@ -22,8 +22,11 @@
   };
   export let options: EditorConfiguration = {};
 
+  // Why initialize with null:
+  // <Codemirror> was created without expected prop 'editor'
+  export let editor: Editor = null;
   onMount(() => {
-    const editor: Editor = CodeMirror.fromTextArea(textArea, options);
+    editor = CodeMirror.fromTextArea(textArea, options);
 
     editor.on("change", (e: Editor) => {
       dispatch("change", e);

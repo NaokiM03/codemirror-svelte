@@ -1,5 +1,5 @@
 import { SvelteComponentTyped } from "svelte";
-import { EditorConfiguration, EditorFromTextArea } from "codemirror";
+import { Editor, EditorConfiguration, EditorFromTextArea } from "codemirror";
 export default class Codemirror extends SvelteComponentTyped<{
   class?: string;
   CodeMirror: {
@@ -10,4 +10,5 @@ export default class Codemirror extends SvelteComponentTyped<{
   };
   options?: EditorConfiguration;
   value?: string;
+  editor?: Editor;
 }> {}
