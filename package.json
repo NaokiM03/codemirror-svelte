@@ -14,7 +14,7 @@
     "src"
   ],
   "scripts": {
-    "update": "npm-check-updates -u"
+    "update": "ncu -u"
   },
   "repository": {
     "type": "git",
