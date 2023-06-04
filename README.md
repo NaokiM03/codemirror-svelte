@@ -2,57 +2,54 @@
 
 Provides a CodeMirror wrapper component for Svelte.
 
+The current library supports `CodeMirror 6`. If you want to use `CodeMirror 5`, install version `1.2.1`.
+
+In CodeMirror 6, it has been modularized. This library was intended to be a thin wrapper, so perhaps it is not needed. If you want a high-level library with abstraction, there is [svelte-codemirror-editor](https://github.com/touchifyapp/svelte-codemirror-editor).
+
 ## Installation
 
 ```sh
-npm install -D codemirror-svelte @types/codemirror
-npm install codemirror
+npm install -D codemirror-svelte
 ```
 
 ## Usage
 
-Check the [CodeMirror manual](https://codemirror.net/doc/manual.html).
+Check the [CodeMirror Reference Manual](https://codemirror.net/docs/ref/).
 
 ```svelte
 <!-- Foo.svelte -->
 <script lang="ts">
-  import CodeMirror, { EditorConfiguration, Editor } from "codemirror";
-  import "codemirror/lib/codemirror.css";
-  import "codemirror/mode/markdown/markdown";
-  import "codemirror/mode/gfm/gfm";
+  import Codemirror, { basicSetup } from "codemirror-svelte";
 
-  import Codemirror from "codemirror-svelte";
+  import { EditorView } from "@codemirror/view";
 
-  const editorOptions: EditorConfiguration = {
-    mode: {
-      name: "gfm",
-      highlightFormatting: true,
-    },
-    lineNumbers: true,
-  };
+  import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
+  import { languages } from "@codemirror/language-data";
+
+  import { oneDarkTheme } from "@codemirror/theme-one-dark";
 
   // initial content
-  let value = "";
+  let doc = "";
 
-  // event registration
-  const editorOnChange = (e: { detail: Editor }) => {};
-  const editorOnScroll = (e: { detail: Editor }) => {};
+  const extensions = [
+    basicSetup,
+    markdown({ base: markdownLanguage, codeLanguages: languages }),
+    oneDarkTheme,
+    EditorView.theme({
+      "&": {
+        height: "800px",
+        fontSize: "20px"
+      }
+      // ..
+    })
+    // ..
+  ];
 </script>
 
 // ..
-  <Codemirror
-    {CodeMirror}
-    {value}
-    options={editorOptions}
-    on:change={editorOnChange}
-    on:scroll={editorOnScroll}
-  />
+  <Codemirror {doc} {extensions} />
 // ..
 ```
-
-## Limitaion
-
-Currently, only `change` and `scroll` events are available.
 
 ## License
 

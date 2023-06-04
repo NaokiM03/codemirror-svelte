@@ -1,22 +1,14 @@
 <script lang="ts">
-  import CodeMirror, { EditorConfiguration, Editor } from "codemirror";
-  import "codemirror/lib/codemirror.css";
-  import "codemirror/mode/markdown/markdown";
-  import "codemirror/mode/gfm/gfm";
-  import "codemirror/theme/solarized.css";
+  import Codemirror, { basicSetup } from "codemirror-svelte";
 
-  import Codemirror from "codemirror-svelte";
+  import { EditorView, scrollPastEnd } from "@codemirror/view";
 
-  const editorOptions: EditorConfiguration = {
-    mode: {
-      name: "gfm",
-      highlightFormatting: true,
-    },
-    lineNumbers: true,
-    theme: "solarized light",
-  };
+  import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
+  import { languages } from "@codemirror/language-data";
 
-  let value = `\
+  import { oneDarkTheme } from "@codemirror/theme-one-dark";
+
+  let doc = `\
 # Foo
 ## Bar
 
@@ -30,18 +22,30 @@
 
 > foo
 > > bar
+
+*hoge*
+
+\`\`\`rust
+fn main() {
+  println!("Hello, world!");
+}
+\`\`\`
 `;
 
-  const editorOnChange = (e: { detail: Editor }) => {};
-  const editorOnScroll = (e: { detail: Editor }) => {};
+  const extensions = [
+    basicSetup,
+    scrollPastEnd(),
+    markdown({ base: markdownLanguage, codeLanguages: languages }),
+    oneDarkTheme,
+    EditorView.theme({
+      "&": {
+        height: "800px",
+        fontSize: "20px"
+      }
+    })
+  ];
 </script>
 
 <main>
-  <Codemirror
-    {CodeMirror}
-    {value}
-    options={editorOptions}
-    on:change={editorOnChange}
-    on:scroll={editorOnScroll}
-  />
+  <Codemirror {doc} {extensions} />
 </main>

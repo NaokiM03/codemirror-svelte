@@ -1,0 +1,7 @@
+node_modules
+/.svelte-kit
+/dist
+
+package-lock.json
+
+/example/dist
