@@ -47,7 +47,7 @@ Check the [CodeMirror Reference Manual](https://codemirror.net/docs/ref/).
 </script>
 
 // ..
-  <Codemirror {doc} {extensions} />
+<Codemirror {doc} {extensions} />
 // ..
 ```
 
