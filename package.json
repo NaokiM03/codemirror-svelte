@@ -1,6 +1,6 @@
 {
   "name": "codemirror-svelte",
-  "version": "1.2.1",
+  "version": "2.0.0",
   "description": "Provides a CodeMirror wrapper component for Svelte",
   "keywords": [
     "svelte",
