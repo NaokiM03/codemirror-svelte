@@ -12,8 +12,7 @@
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^1.0.8",
     "@tsconfig/svelte": "^3.0.0",
-    "@types/codemirror": "^5.60.5",
-    "codemirror-svelte": "file:../",
+    "codemirror-svelte": "2.0.0",
     "svelte": "^3.50.1",
     "svelte-check": "^2.9.1",
     "svelte-preprocess": "^4.10.7",
@@ -22,6 +21,8 @@
     "vite": "^3.1.4"
   },
   "dependencies": {
-    "codemirror": "^5.65.9"
+    "@codemirror/lang-markdown": "^6.1.1",
+    "@codemirror/language-data": "^6.3.1",
+    "@codemirror/theme-one-dark": "^6.1.2"
   }
 }
